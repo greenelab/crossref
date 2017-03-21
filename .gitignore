@@ -1,0 +1,4 @@
+mongo.db
+
+# Jupyter
+.ipynb_checkpoints/
