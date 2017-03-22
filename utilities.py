@@ -21,6 +21,7 @@ def api_query(component, **kwargs):
 def query_all(
         component='works',
         batch_size=20,
+        cursor=None,
         max_items=None,
         tqdm=tqdm.tqdm,
         ):
@@ -31,6 +32,10 @@ def query_all(
         Crossref query endpoint. See https://git.io/vyp7S
     batch_size : int
         items to return per API call.
+    cursor : None or str
+        Specify cursor for the works endpoint. Use '*' to start from scratch
+        or specify an existing cursor returned from a previous query.
+        To use an offset rather than a cursor for pagin, use None (default).
     max_items : int or None
         max items to yield. Disable with None.
     tqdm : tqdm.tqdm
@@ -42,11 +47,7 @@ def query_all(
     incomplete = True
     successive_errors = 0
     rows = batch_size
-    # For the works endpoint, use cursor rather than offset
-    cursor = component == 'works'
-    if cursor:
-        cursor = '*'
-    else:
+    if not cursor:
         offset = 0
 
     while incomplete:
