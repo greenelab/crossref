@@ -59,12 +59,13 @@ def query_all(
         # HTTP Request failed
         if response.status_code != 200:
             successive_errors += 1
-            msg = (f'Successive error {successive_errors}: '
-                   f'{response.url} returned status_code '
-                   f'{response.status_code}:\n{response.text}')
+            msg = (f'Successive error {successive_errors}. '
+                   f'Status code {response.status_code} from {response.url}:'
+                   f'\n{response.text}')
             logging.warning(msg)
+            # Exponential backoff upon errors
             time.sleep(2 ** successive_errors)
-            rows = int(0.8 * rows)
+            rows = int(0.75 * rows)
             continue
 
         # If successful, rollback the state of emergency
