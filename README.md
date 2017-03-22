@@ -29,3 +29,7 @@ conda env create --file=environment.yml
 ```
 
 Then use `source activate crossref` and `source deactivate` to activate or deactivate the environment. On windows, use `activate crossref` and `deactivate` instead.
+
+## Acknowledgements
+
+This work is funded in part by the Gordon and Betty Moore Foundation's Data-Driven Discovery Initiative through Grant [GBMF4552](https://www.moore.org/grant-detail?grantId=GBMF4552) to [**@cgreene**](https://github.com/cgreene "Casey Greene on GitHub").
