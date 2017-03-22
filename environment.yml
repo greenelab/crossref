@@ -1,12 +1,14 @@
 name: crossref
 dependencies:
 - ipykernel=4.5.2
+- ipywidgets=6.0.0
 - nbconvert=5.1.1
 - pandas=0.19.2
 - pymongo=3.3.0
 - pytest=3.0.7
 - python=3.6.0
 - requests=2.12.4
+- tqdm=4.11.2
 - pip:
   - habanero==0.2.6
   - ratelimit==1.2.0
