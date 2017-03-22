@@ -96,7 +96,7 @@ def query_all(
         # Update position
         if cursor:
             cursor = result['message']['next-cursor']
-            logging.info(f'{progress_bar.n} queries complete. '
+            logging.info(f'{progress_bar.n:,} queries complete. '
                          f'Cursor updated to {cursor}')
         else:
             # Fail if offset bug occurs https://git.io/vyjkL
