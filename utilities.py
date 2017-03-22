@@ -92,9 +92,12 @@ def query_all(
         yield from items
 
         # Update position
-        incomplete = bool(items)
-        progress_bar.update(len(items))
         if cursor:
             cursor = result['message']['next-cursor']
         else:
+            # Fail if offset bug occurs https://git.io/vyjkL
+            start_index = result['message']['query']['start-index']
+            assert offset == start_index
             offset += len(items)
+        progress_bar.update(len(items))
+        incomplete = bool(items)
