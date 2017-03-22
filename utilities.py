@@ -1,4 +1,5 @@
 import logging
+import time
 
 import requests
 import ratelimit
@@ -39,6 +40,8 @@ def query_all(
     # Initialize position
     progress_bar = None
     incomplete = True
+    successive_errors = 0
+    rows = batch_size
     # For the works endpoint, use cursor rather than offset
     cursor = component == 'works'
     if cursor:
@@ -50,14 +53,22 @@ def query_all(
 
         # Perform the API call
         params = {'cursor': cursor} if cursor else {'offset': offset}
-        response = api_query(component, rows=batch_size, **params)
+        response = api_query(component, rows=rows, **params)
 
         # HTTP Request failed
         if response.status_code != 200:
-            msg = (f'{response.url} returned status_code '
+            successive_errors += 1
+            msg = (f'Successive error {successive_errors}: '
+                   f'{response.url} returned status_code '
                    f'{response.status_code}:\n{response.text}')
             logging.warning(msg)
+            time.sleep(2 ** successive_errors)
+            rows = int(0.8 * rows)
             continue
+
+        # If successful, rollback the state of emergency
+        successive_errors = 0
+        rows = batch_size
 
         # Extract JSON payload
         result = response.json()
