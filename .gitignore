@@ -1,4 +1,5 @@
 mongo.db
+query-works.log
 
 # Jupyter
 .ipynb_checkpoints/

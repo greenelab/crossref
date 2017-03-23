@@ -19,6 +19,20 @@ docker run \
   mongo:3.4.2
 ```
 
+## Execution
+
+With mongo running, execute with the following commands:
+
+```sh
+# Download all works
+# To start fresh, use `--cursor="*"`
+python download.py \
+  --component=works \
+  --batch-size=500 \
+  --log=query-works.log \
+  --cursor="AoE/BWh0dHA6Ly9keC5kb2kub3JnLzEwLjEwMDcvYmYwMjM5NzMzMQ=="
+```
+
 ## Environment
 
 This repository uses [conda](http://conda.pydata.org/docs/) to manage its environment as specified in [`environment.yml`](environment.yml).
