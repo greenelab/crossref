@@ -7,14 +7,14 @@ import tqdm
 
 
 @ratelimit.rate_limited(15)
-def api_query(component, **kwargs):
+def api_query(component, timeout=60, **kwargs):
     """
     Query the Crossref API and return the requests.response. Pass URL
     parameters as keyword arguments, e.g. `rows=1000` for max throughput.
     See https://github.com/CrossRef/rest-api-doc/blob/master/rest_api.md.
     """
     url = f'https://api.crossref.org/{component}'
-    response = requests.get(url, kwargs)
+    response = requests.get(url, kwargs, timeout=timeout)
     return response
 
 
@@ -54,7 +54,16 @@ def query_all(
 
         # Perform the API call
         params = {'cursor': cursor} if cursor else {'offset': offset}
-        response = api_query(component, rows=rows, **params)
+        try:
+            response = api_query(component, rows=rows, **params)
+        except requests.exceptions.Timeout as e:
+            msg = (f'Successive error {successive_errors}. '
+                   f'Timeout from the following parameters:'
+                   f'\n{params}\nWith error:\n{e}')
+            logging.warning(msg)
+            time.sleep(2 ** successive_errors)
+            rows = int(0.75 * rows)
+            continue
 
         # HTTP Request failed
         if response.status_code != 200:
