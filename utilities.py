@@ -56,9 +56,9 @@ def query_all(
         params = {'cursor': cursor} if cursor else {'offset': offset}
         try:
             response = api_query(component, rows=rows, **params)
-        except requests.exceptions.Timeout as e:
+        except Exception as e:
             msg = (f'Successive error {successive_errors}. '
-                   f'Timeout from the following parameters:'
+                   f'Error from the following parameters:'
                    f'\n{params}\nWith error:\n{e}')
             logging.warning(msg)
             time.sleep(2 ** successive_errors)

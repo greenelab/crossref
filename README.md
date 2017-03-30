@@ -28,9 +28,9 @@ With mongo running, execute with the following commands:
 # To start fresh, use `--cursor="*"`
 python download.py \
   --component=works \
-  --batch-size=500 \
+  --batch-size=550 \
   --log=query-works.log \
-  --cursor="AoE/BWh0dHA6Ly9keC5kb2kub3JnLzEwLjEwMDcvYmYwMjM5NzMzMQ=="
+  --cursor="AoE/C2h0dHA6Ly9keC5kb2kub3JnLzEwLjExNzkvZWNrXzE5OTNfMl8xXzAwMg=="
 ```
 
 ## Environment
