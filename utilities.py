@@ -57,6 +57,7 @@ def query_all(
         try:
             response = api_query(component, rows=rows, **params)
         except Exception as e:
+            successive_errors += 1
             msg = (f'Successive error {successive_errors}. '
                    f'Error from the following parameters:'
                    f'\n{params}\nWith error:\n{e}')
