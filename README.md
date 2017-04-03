@@ -14,7 +14,6 @@ docker run \
   --name=mongo-crossref \
   --publish=27017:27017 \
   --volume=`pwd`/mongo.db:/data/db \
-  --detach \
   --rm \
   mongo:3.4.2
 ```
@@ -25,12 +24,18 @@ With mongo running, execute with the following commands:
 
 ```sh
 # Download all works
-# To start fresh, use `--cursor="*"`
+# To start fresh, use `--cursor=*`
 python download.py \
   --component=works \
   --batch-size=550 \
   --log=query-works.log \
-  --cursor="AoE/C2h0dHA6Ly9keC5kb2kub3JnLzEwLjExNzkvZWNrXzE5OTNfMl8xXzAwMg=="
+  --cursor=*
+
+# Export mongodb works collection to JSON
+mongoexport \
+  --db=crossref \
+  --collection=works \
+  | xz > data/mongo-export/crossref-works.json.xz
 ```
 
 ## Environment
