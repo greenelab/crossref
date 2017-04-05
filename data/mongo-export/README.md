@@ -13,3 +13,19 @@ If you use this file, please cite https://doi.org/10.6084/m9.figshare.4816720 (o
 It was created using [`mongoexport`](https://docs.mongodb.com/manual/reference/program/mongoexport/) and can be imported into MongoDB using [`mongoimport`](https://docs.mongodb.com/manual/reference/program/mongoimport/).
 The file as a whole is not actually valid JSON. However, each line of the file is valid JSON and encodes a single work retrieved from the Crossref API.
 Accordingly, you can read this file without `mongoimport` by splitting at newlines and parsing each line as JSON.
+
+## Downloading & Checksums
+
+After downloading files from figshare and placing them in this directory, you can check their integrity with:
+
+```sh
+# Verify SHA-256 checksums
+shasum --algorithm 256 --check checksums-sha256.txt
+```
+
+[`checksums-sha256.txt`](checksums-sha256.txt) was created using the following command:
+
+```sh
+# Create SHA-256 Checksums (contributors only)
+shasum --algorithm 256 *.xz > checksums-sha256.txt
+```
