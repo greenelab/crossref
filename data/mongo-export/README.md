@@ -16,9 +16,15 @@ Accordingly, you can read this file without `mongoimport` by splitting at newlin
 
 ## Downloading & Checksums
 
-After downloading files from figshare and placing them in this directory, you can check their integrity with:
+From this directory, run the following commands to download the figshare datasets and check their integrity:
 
 ```sh
+# Download crossref-works.json.xz from figshare
+# File URL from https://api.figshare.com/v2/articles/4816720
+wget --no-clobber \
+  --output-document=crossref-works.json.xz \
+  https://ndownloader.figshare.com/files/7985110
+
 # Verify SHA-256 checksums
 shasum --algorithm 256 --check checksums-sha256.txt
 ```
