@@ -42,6 +42,10 @@ See [`data/mongo-export`](data/mongo-export) for more information on `crossref-w
 Note that creating this file from the Crossref API takes several weeks.
 Users are encouraged to use the cached version available on [figshare](https://doi.org/10.6084/m9.figshare.4816720).
 
+[`1.works-to-dataframe.ipynb`](1.works-to-dataframe.ipynb) is a Jupyter notebook that extracts a mapping from DOI to journal ISSN.
+The mapping is exported to [`doi-to-issn.tsv.xz`](data/doi-to-issn.tsv.xz), which is tracked using Git LFS.
+There are columns for the work type and its date issued.
+
 ## Environment
 
 This repository uses [conda](http://conda.pydata.org/docs/) to manage its environment as specified in [`environment.yml`](environment.yml).
