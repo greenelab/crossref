@@ -38,6 +38,10 @@ mongoexport \
   | xz > data/mongo-export/crossref-works.json.xz
 ```
 
+See [`data/mongo-export`](data/mongo-export) for more information on `crossref-works.json.xz`.
+Note that creating this file from the Crossref API takes several weeks.
+Users are encouraged to use the cached version available on [figshare](https://doi.org/10.6084/m9.figshare.4816720).
+
 ## Environment
 
 This repository uses [conda](http://conda.pydata.org/docs/) to manage its environment as specified in [`environment.yml`](environment.yml).
