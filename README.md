@@ -25,6 +25,10 @@ With mongo running, execute with the following commands:
 ```sh
 # Download all works
 # To start fresh, use `--cursor=*`
+# If querying fails midway, you can extract the cursor of the
+# last successful query from the tail of query-works.log.
+# Then rerun download.py, passing the intermediate cursor
+# to --cursor instead of *.
 python download.py \
   --component=works \
   --batch-size=550 \
