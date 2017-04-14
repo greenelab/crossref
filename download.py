@@ -13,6 +13,8 @@ def get_mongo_collection(db, component):
     collection = db[args.component]
     if component == 'works':
         collection.create_index('DOI', unique=True)
+    if component == 'types':
+        collection.create_index('id', unique=True)
     else:
         msg = f'{component} component not supported by get_mongo_collection'
         raise SystemExit(msg)
@@ -33,6 +35,12 @@ def generator_to_mongo(generator, collection):
         for work in generator:
             filter_ = {'DOI': work['DOI']}
             collection.replace_one(filter_, work, upsert=True)
+
+    # Add types
+    if component == 'types':
+        for type_ in generator:
+            filter_ = {'id': type_['id']}
+            collection.replace_one(filter_, type_, upsert=True)
 
     # Component not supported
     else:
@@ -70,8 +78,8 @@ if __name__ == '__main__':
     )
 
     # Only works are supported for now
-    if args.component != 'works':
-        raise SystemExit('Currently only the works component is supported.')
+    if args.component not in {'works', 'types'}:
+        raise SystemExit(f'{args.component} component is not supported.')
 
     # Connect to mongo
     client = pymongo.MongoClient(args.mongo)

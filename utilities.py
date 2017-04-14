@@ -109,9 +109,12 @@ def query_all(
             logging.info(f'{progress_bar.n:,} queries complete. '
                          f'Cursor updated to {cursor}')
         else:
-            # Fail if offset bug occurs https://git.io/vyjkL
-            start_index = result['message']['query']['start-index']
-            assert offset == start_index
+            try:
+                # Fail if offset bug occurs https://git.io/vyjkL
+                start_index = result['message']['query']['start-index']
+                assert offset == start_index
+            except KeyError:
+                pass
             offset += len(items)
             logging.info(f'Offset updated to {offset}')
         progress_bar.update(len(items))

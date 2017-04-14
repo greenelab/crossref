@@ -20,6 +20,8 @@ docker run \
 
 ## Execution
 
+### works
+
 With mongo running, execute with the following commands:
 
 ```sh
@@ -50,6 +52,16 @@ Users are encouraged to use the cached version available on [figshare](https://d
 
 + [`doi.tsv.xz`](data/doi.tsv.xz): a table where each row is a work, with columns for the DOI, type, and issued date.
 + [`doi-to-issn.tsv.xz`](data/doi-to-issn.tsv.xz): a table where each row is a work (DOI) to journal (ISSN) mapping.
+
+### types
+
+With mongo running, execute with the following command:
+
+```sh
+python download.py \
+  --component=types \
+  --log=logs/query-types.log
+```
 
 ## Environment
 
