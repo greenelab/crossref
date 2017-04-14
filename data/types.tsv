@@ -1,0 +1,27 @@
+type_id	type_label	n_works
+book	Book	534525
+book-chapter	Book Chapter	10250455
+book-part	Part	1336
+book-section	Book Section	3909
+book-series	Book Series	2403
+book-set	Book Set	115
+book-track	Book Track	20
+component	Component	2719953
+dataset	Dataset	1483010
+dissertation	Dissertation	150186
+edited-book	Edited Book	0
+journal	Journal	22247
+journal-article	Journal Article	65424681
+journal-issue	Journal Issue	513174
+journal-volume	Journal Volume	1325
+monograph	Monograph	293148
+other	Other	173954
+posted-content	Posted Content	10959
+proceedings	Proceedings	14558
+proceedings-article	Proceedings Article	4763593
+reference-book	Reference Book	5136
+reference-entry	Reference Entry	560667
+report	Report	361079
+report-series	Report Series	7930
+standard	Standard	243296
+standard-series	Standard Series	0
