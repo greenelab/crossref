@@ -32,7 +32,7 @@ With mongo running, execute with the following commands:
 python download.py \
   --component=works \
   --batch-size=550 \
-  --log=query-works.log \
+  --log=logs/query-works.log \
   --cursor=*
 
 # Export mongodb works collection to JSON
