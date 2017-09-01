@@ -13,7 +13,7 @@ def get_mongo_collection(db, component):
     collection = db[args.component]
     if component == 'works':
         collection.create_index('DOI', unique=True)
-    if component == 'types':
+    elif component == 'types':
         collection.create_index('id', unique=True)
     else:
         msg = f'{component} component not supported by get_mongo_collection'
@@ -37,7 +37,7 @@ def generator_to_mongo(generator, collection):
             collection.replace_one(filter_, work, upsert=True)
 
     # Add types
-    if component == 'types':
+    elif component == 'types':
         for type_ in generator:
             filter_ = {'id': type_['id']}
             collection.replace_one(filter_, type_, upsert=True)
