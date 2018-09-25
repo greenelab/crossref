@@ -78,10 +78,13 @@ Then use `source activate crossref` and `source deactivate` to activate or deact
 
 Ideally, Crossref would provide a complete database dump, rather than requiring users to go through the inefficient process of API querying all works: see [CrossRef/rest-api-doc#271](https://github.com/CrossRef/rest-api-doc/issues/271).
 Until then, users should checkout the Crossref data currently hosted by this repository, whose query date is 2017-03-21, and its corresponding [figshare](https://doi.org/10.6084/m9.figshare.4816720.v1).
-For users who need more recent data, Bryan Newbold [used this codebase](https://github.com/greenelab/crossref/issues/5) to create a MongoDB dump dated January 2018 (query date of approximately 2018-01-10), which he uploaded to the [Internet Archive](https://archive.org/download/crossref_doi_dump_201801).
+
+For users who need more recent data, Bryan Newbold [used this codebase](https://github.com/greenelab/crossref/issues/5) to create a MongoDB dump dated **January 2018** (query date of approximately 2018-01-10), which he uploaded to the [Internet Archive](https://archive.org/download/crossref_doi_dump_201801).
 His output file `crossref-works.2018-01-21.json.xz` contains 93,585,242 DOIs and consumes 28.9 GB compared to 87,542,370 DOIs and 7.0 GB for the `crossref-works.json.xz` dated 2017-03-21.
 This increased size is presumably due to the addition of [I4OC](https://i4oc.org/ "Initiative for Open Citations") references to Crossref work records.
-This repository is currently seeking contributions to update the convenient TSV outputs based on the January 2018 database dump.
+
+Bryan Newbold has also created a **September 2018** release, which is uploaded to the [Internet Archive](https://archive.org/download/crossref_doi_dump_201809).
+This repository is currently seeking contributions to update the convenient TSV outputs based on the more recent database dumps.
 
 Daniel Ecer also downloaded the Crossref work metadata in January 2018, using the codebase at [elifesciences/datacapsule-crossref](https://github.com/elifesciences/datacapsule-crossref).
 His database dump is available on [figshare](https://doi.org/10.6084/m9.figshare.5845554.v2 "Crossref Works Dump - January 2018").
